@@ -30,6 +30,7 @@ module OmniAuth
           scope_list.map! { |s| s =~ /^https?:\/\// || BASE_SCOPES.include?(s) ? s : "#{BASE_SCOPE_URL}#{s}" }
           params[:scope] = scope_list.join(" ")
           params[:access_type] = 'offline' if params[:access_type].nil?
+          params['openid.realm'] = 'http://gamin.me/'
 
           session['omniauth.state'] = params[:state] if params['state']
         end
