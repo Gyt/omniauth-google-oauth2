@@ -30,7 +30,7 @@ module OmniAuth
           scope_list.map! { |s| s =~ /^https?:\/\// || BASE_SCOPES.include?(s) ? s : "#{BASE_SCOPE_URL}#{s}" }
           params[:scope] = scope_list.join(" ")
           params[:access_type] = 'offline' if params[:access_type].nil?
-          params['openid.realm'] = 'http://localhost:3000/'
+          params['openid.realm'] = 'http://localhost:3000/users/auth/google_oauth2/callback'
 
           session['omniauth.state'] = params[:state] if params['state']
         end
